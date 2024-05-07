@@ -10,7 +10,7 @@ Panels:
         - /TF1/Frames1
         - /Path1
       Splitter Ratio: 0.5
-    Tree Height: 798
+    Tree Height: 441
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -122,7 +122,7 @@ Visualization Manager:
       Head Length: 0.20000000298023224
       Length: 0.30000001192092896
       Line Style: Billboards
-      Line Width: 0.009999999776482582
+      Line Width: 0.05999999865889549
       Name: Path
       Offset:
         X: 0
@@ -245,7 +245,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/ThirdPersonFollower
-      Distance: 8.146440505981445
+      Distance: 7.2147393226623535
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -261,9 +261,9 @@ Visualization Manager:
       Invert Z Axis: true
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.4051007628440857
+      Pitch: 0.325100839138031
       Target Frame: IMU
-      Yaw: 3.1477136611938477
+      Yaw: 3.292715072631836
     Saved: ~
 Window Geometry:
   Displays:
