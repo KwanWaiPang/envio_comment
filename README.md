@@ -15,4 +15,6 @@
 ~~~
   cm
   roslaunch ensemble_vio run_bag.launch
+
+  evo_ape bag ***.bag /cpy_uav/viconros/odometry /envio_nesl/odom -va -p
 ~~~

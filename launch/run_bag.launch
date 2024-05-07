@@ -72,4 +72,7 @@
     <!-- <arg name="bag_name" value="/home/kwanwaipang/dataset/snu301_dataset/03/snu301_03.bag"/> -->
 	  <node pkg="rosbag" type="play" name="rosbag" args="-r 1.0 --clock --pause $(arg bag_name)" launch-prefix="gnome-terminal -x"/>
 
+    <!-- 录制rosbag用于验证 -->
+    <node pkg="rosbag" type="record" name="bag_record" args="/envio_nesl/odom /envio_nesl/pose /cpy_uav/viconros/odometry -O /home/kwanwaipang/dataset/EVI-SAM/esvio/envio_result/HKU_aggressive_rotation"/>
+
 </launch>

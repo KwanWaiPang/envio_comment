@@ -1007,6 +1007,8 @@ void sl_iekf::registerPub(ros::NodeHandle &n) {
     pub_state_ = n.advertise<nav_msgs::Odometry>
         ("/envio_nesl/odom", 1000);
 
+    pub_pose_ = n.advertise<geometry_msgs::PoseStamped>("/envio_nesl/pose", 1000);
+
     pub_path_ = n.advertise<nav_msgs::Path>
         ("/envio_nesl/path", 1000);
     
@@ -1101,6 +1103,9 @@ void sl_iekf::publishPoseAndMap(const std_msgs::Header& header,
     path_.header.frame_id = "world";
     path_.poses.push_back(pose_stamped);
     pub_path_.publish(path_);
+
+    // 发布posestamped格式
+    pub_pose_.publish(pose_stamped);
 
     if (photo_map_.size() > 0) {
         sensor_msgs::PointCloud2 cloud;

@@ -253,6 +253,7 @@ class sl_iekf {
         double& dI_x, double& dI_y);
 
     ros::Publisher pub_state_;
+    ros::Publisher pub_pose_;//发布pose
     ros::Publisher pub_path_;
     ros::Publisher pub_tracking_points_;
     ros::Publisher pub_marg_points_;

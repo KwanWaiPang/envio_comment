@@ -304,8 +304,8 @@ int main(int argc, char **argv) {
         camr_sub(n, "/right_image", 1);//原本设置为200，200表示缓冲区大小
 
     //输出当前的topic名字
-    std::cout << "左相机的topic名字 = " << caml_sub.getTopic() << std::endl;
-    std::cout << "右相机的topic名字 = " << camr_sub.getTopic() << std::endl;
+    // std::cout << "左相机的topic名字 = " << caml_sub.getTopic() << std::endl;
+    // std::cout << "右相机的topic名字 = " << camr_sub.getTopic() << std::endl;
 
     typedef message_filters::sync_policies::ApproximateTime<sensor_msgs::Image, sensor_msgs::Image> MySyncPolicy; 
     
