@@ -31,7 +31,9 @@
 #include <ros/ros.h>
 #include <sensor_msgs/Imu.h>
 #include <message_filters/subscriber.h>
-#include <message_filters/time_synchronizer.h>
+// #include <message_filters/time_synchronizer.h>
+#include <message_filters/synchronizer.h>
+#include <message_filters/sync_policies/approximate_time.h>
 
 #include "core/sl_iekf.h"
 
@@ -98,7 +100,7 @@ void imu_callback(const sensor_msgs::ImuConstPtr& imu_msg) {
 
 void stereo_callback(const sensor_msgs::ImageConstPtr& caml_img,
     const sensor_msgs::ImageConstPtr& camr_img) {
-    ROS_ERROR("Stereo image received!!!!!!!!!!!!!!");
+    // ROS_ERROR("Stereo image received!!!!!!!!!!!!!!");
     m_estimator.lock();
     cv::Mat mask = estimator.mask();
     m_estimator.unlock();
@@ -297,17 +299,24 @@ int main(int argc, char **argv) {
 
     // Stereo camera subscriber
     message_filters::Subscriber<sensor_msgs::Image>
-        caml_sub(n, "/left_image", 200);//原本设置为200，200表示缓冲区大小
+        caml_sub(n, "/left_image", 1);//原本设置为200，200表示缓冲区大小
     message_filters::Subscriber<sensor_msgs::Image>
-        camr_sub(n, "/right_image", 200);//原本设置为200，200表示缓冲区大小
+        camr_sub(n, "/right_image", 1);//原本设置为200，200表示缓冲区大小
 
     //输出当前的topic名字
     std::cout << "左相机的topic名字 = " << caml_sub.getTopic() << std::endl;
     std::cout << "右相机的topic名字 = " << camr_sub.getTopic() << std::endl;
+
+    typedef message_filters::sync_policies::ApproximateTime<sensor_msgs::Image, sensor_msgs::Image> MySyncPolicy; 
     
-    message_filters::TimeSynchronizer
-        <sensor_msgs::Image, sensor_msgs::Image>
-            stereo_sub(caml_sub, camr_sub, 200);//原本设置为200，200表示缓冲区大小
+    // 创建同步器对象
+    // message_filters::TimeSynchronizer
+    //     <sensor_msgs::Image, sensor_msgs::Image>
+    //         stereo_sub(caml_sub, camr_sub, 200);//原本设置为200，200表示缓冲区大小
+
+    message_filters::Synchronizer<MySyncPolicy> stereo_sub(MySyncPolicy(10), caml_sub, camr_sub);
+
+    //注册回调函数
     stereo_sub.registerCallback(
             boost::bind(&stereo_callback, _1, _2));
 

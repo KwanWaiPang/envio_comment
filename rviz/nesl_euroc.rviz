@@ -8,6 +8,7 @@ Panels:
         - /Odometry1/Shape1
         - /Odometry1/Covariance1
         - /TF1/Frames1
+        - /Path1
       Splitter Ratio: 0.5
     Tree Height: 798
   - Class: rviz/Selection
@@ -115,13 +116,13 @@ Visualization Manager:
     - Alpha: 1
       Buffer Length: 1
       Class: rviz/Path
-      Color: 0; 0; 0
+      Color: 252; 233; 79
       Enabled: true
       Head Diameter: 0.30000001192092896
       Head Length: 0.20000000298023224
       Length: 0.30000001192092896
       Line Style: Billboards
-      Line Width: 0.07000000029802322
+      Line Width: 0.009999999776482582
       Name: Path
       Offset:
         X: 0
@@ -244,7 +245,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/ThirdPersonFollower
-      Distance: 9.669034957885742
+      Distance: 8.146440505981445
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -252,17 +253,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: -2.7486701011657715
-        Y: 1.5306848287582397
+        X: -1.3255081176757812
+        Y: 0.8894634246826172
         Z: 0.046729207038879395
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: true
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.3201006054878235
+      Pitch: 0.4051007628440857
       Target Frame: IMU
-      Yaw: 2.9177160263061523
+      Yaw: 3.1477136611938477
     Saved: ~
 Window Geometry:
   Displays:
