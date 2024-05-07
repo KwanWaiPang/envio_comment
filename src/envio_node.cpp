@@ -98,7 +98,7 @@ void imu_callback(const sensor_msgs::ImuConstPtr& imu_msg) {
 
 void stereo_callback(const sensor_msgs::ImageConstPtr& caml_img,
     const sensor_msgs::ImageConstPtr& camr_img) {
-    // ROS_INFO("Stereo image received.");
+    ROS_ERROR("Stereo image received!!!!!!!!!!!!!!");
     m_estimator.lock();
     cv::Mat mask = estimator.mask();
     m_estimator.unlock();
@@ -293,14 +293,21 @@ int main(int argc, char **argv) {
     ros::Subscriber sub_imu = n.subscribe("/imu", 2000, imu_callback,
         ros::TransportHints().tcpNoDelay());
 
+    ROS_WARN("envio_node initialized.");
+
     // Stereo camera subscriber
     message_filters::Subscriber<sensor_msgs::Image>
-        caml_sub(n, "/left_image", 200);
+        caml_sub(n, "/left_image", 200);//原本设置为200，200表示缓冲区大小
     message_filters::Subscriber<sensor_msgs::Image>
-        camr_sub(n, "/right_image", 200);
+        camr_sub(n, "/right_image", 200);//原本设置为200，200表示缓冲区大小
+
+    //输出当前的topic名字
+    std::cout << "左相机的topic名字 = " << caml_sub.getTopic() << std::endl;
+    std::cout << "右相机的topic名字 = " << camr_sub.getTopic() << std::endl;
+    
     message_filters::TimeSynchronizer
         <sensor_msgs::Image, sensor_msgs::Image>
-            stereo_sub(caml_sub, camr_sub, 200);
+            stereo_sub(caml_sub, camr_sub, 200);//原本设置为200，200表示缓冲区大小
     stereo_sub.registerCallback(
             boost::bind(&stereo_callback, _1, _2));
 

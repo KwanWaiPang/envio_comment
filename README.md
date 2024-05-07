@@ -6,7 +6,7 @@
 
 [comment]: <> (  <h2 align="center">PAPER</h2>)
   <h3 align="center">
-  <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9686364">Paper r3live</a> 
+  <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9686364">Paper</a> 
   | <a href="https://github.com/lastflowers/envio">Original Github Page</a>
   </h3>
   <div align="center"></div>
@@ -14,5 +14,5 @@
 
 ~~~
   cm
-  roslaunch r3live r3live_bag.launch
+  roslaunch ensemble_vio run_bag.launch
 ~~~
