@@ -69,4 +69,5 @@
     <!-- 录制rosbag用于验证 -->
     <!-- <node pkg="rosbag" type="record" name="bag_record" args="/envio_nesl/odom /envio_nesl/pose /cpy_uav/viconros/odometry -O /home/kwanwaipang/dataset/EVI-SAM/esvio/envio_result/hku_hdr_tran_rota"/> -->
 
+
 </launch>
